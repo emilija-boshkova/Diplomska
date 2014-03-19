@@ -92,11 +92,6 @@
     <Content Include="assets\css\style.css" />
     <Content Include="assets\css\themes\default.css" />
     <Content Include="assets\img\accordion-plusminus.png" />
-    <Content Include="assets\img\avatar.png" />
-    <Content Include="assets\img\avatar1.jpg" />
-    <Content Include="assets\img\avatar1_small.jpg" />
-    <Content Include="assets\img\avatar2.jpg" />
-    <Content Include="assets\img\avatar3.jpg" />
     <Content Include="assets\img\bg-opacity.png" />
     <Content Include="assets\img\bg-white-lock.png" />
     <Content Include="assets\img\bg-white.png" />
@@ -144,7 +139,6 @@
     <Content Include="assets\img\invoice\walmart.png" />
     <Content Include="assets\img\loading-spinner-grey.gif" />
     <Content Include="assets\img\loading.gif" />
-    <Content Include="assets\img\logo-big.png" />
     <Content Include="assets\img\logo.png" />
     <Content Include="assets\img\menu-toggler.png" />
     <Content Include="assets\img\overlay-icon.png" />
@@ -156,8 +150,6 @@
     <Content Include="assets\img\pages\img2.png" />
     <Content Include="assets\img\pages\img3.png" />
     <Content Include="assets\img\pages\img4.png" />
-    <Content Include="assets\img\photo1.jpg" />
-    <Content Include="assets\img\photo2.jpg" />
     <Content Include="assets\img\portlet-collapse-icon-white.png" />
     <Content Include="assets\img\portlet-collapse-icon.png" />
     <Content Include="assets\img\portlet-config-icon-white.png" />
