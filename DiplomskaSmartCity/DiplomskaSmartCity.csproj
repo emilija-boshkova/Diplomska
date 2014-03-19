@@ -394,6 +394,7 @@
     <Content Include="assets\scripts\custom\ui-notific8.js" />
     <Content Include="assets\scripts\custom\ui-toastr.js" />
     <Content Include="assets\scripts\custom\ui-tree.js" />
+    <Content Include="crimemap\crimemap.xml" />
     <Content Include="Dashboard.aspx" />
     <Content Include="dashboard.css" />
     <Content Include="images\air_quality\High.jpg" />
