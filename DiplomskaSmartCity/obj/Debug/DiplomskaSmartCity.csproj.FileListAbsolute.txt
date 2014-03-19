@@ -1,0 +1,10 @@
+c:\users\emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\DiplomskaSmartCity.dll
+c:\users\emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\DiplomskaSmartCity.pdb
+c:\users\emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\obj\Debug\DiplomskaSmartCity.dll
+c:\users\emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\obj\Debug\DiplomskaSmartCity.pdb
+c:\users\emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\Newtonsoft.Json.dll
+c:\users\emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\Newtonsoft.Json.xml
+C:\Users\Emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\HtmlAgilityPack.dll
+C:\Users\Emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\HtmlAgilityPack.pdb
+C:\Users\Emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\bin\HtmlAgilityPack.xml
+C:\Users\Emilija\documents\visual studio 2012\Projects\DiplomskaSmartCity\DiplomskaSmartCity\obj\Debug\DiplomskaSmartCity.csprojResolveAssemblyReference.cache
