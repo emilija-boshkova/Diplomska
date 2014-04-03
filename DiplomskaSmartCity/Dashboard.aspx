@@ -255,7 +255,7 @@
         <div id="title_div" class="row">
             <div class="col-md-12">
                 <div class="pull-left">
-                    <img src="images/grad_skopje2-transparent.png" />
+                    <img src="images/finki-logo.png" />
                 </div>
                 <div class="page-title" style="margin-top: 35px">
                     <label id="title"><b><i>СКОПЈЕ - ПАМЕТЕН ГРАД</i></b></label>
@@ -416,7 +416,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                                             <HeaderStyle BackColor="Tan" Font-Bold="True" />
                                             <Columns>
                                                 <asp:BoundField DataField="Nr" HeaderText="#"></asp:BoundField>
-                                                <asp:BoundField DataField="Street" HeaderText="Улица"></asp:BoundField>
+                                                <asp:BoundField DataField="Street" HeaderText="Локација"></asp:BoundField>
                                                 <asp:BoundField DataField="Activity" HeaderText="Активност"></asp:BoundField>
                                             </Columns>
                                         </asp:GridView>
