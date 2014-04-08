@@ -394,7 +394,6 @@
     <Content Include="assets\scripts\custom\ui-notific8.js" />
     <Content Include="assets\scripts\custom\ui-toastr.js" />
     <Content Include="assets\scripts\custom\ui-tree.js" />
-    <Content Include="crimemap\crimemap.xml" />
     <Content Include="Dashboard.aspx" />
     <Content Include="dashboard.css" />
     <Content Include="images\air_quality\High.jpg" />
@@ -416,7 +415,6 @@
     <Content Include="images\grad_skopje2-transparent.png" />
     <Content Include="jquery.blockUI.js" />
     <Content Include="images\loader.GIF" />
-    <Content Include="Test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -429,13 +427,6 @@
     </Compile>
     <Compile Include="Event.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

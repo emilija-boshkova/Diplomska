@@ -24,46 +24,47 @@ namespace DiplomskaSmartCity
             {
                 GetAirInfo();
                 GetSkopjeUliciAktivnosti();
+                GetWaterInfo();
             }
         }
 
-        protected string CrimeMapData()//(object sender, EventArgs e)
-        {
-            //requesting the particular web page
-           // Uri myuri = new Uri("http://crimemap.finki.ukim.mk/model/xmldump.php");
-           // var httpRequest = (HttpWebRequest)WebRequest.Create(myuri);
+        //protected string CrimeMapData()//(object sender, EventArgs e)
+        //{
+        //    //requesting the particular web page
+        //   // Uri myuri = new Uri("http://crimemap.finki.ukim.mk/model/xmldump.php");
+        //   // var httpRequest = (HttpWebRequest)WebRequest.Create(myuri);
 
-            //geting the response from the request url
-            //var response = (HttpWebResponse)httpRequest.GetResponse();
+        //    //geting the response from the request url
+        //    //var response = (HttpWebResponse)httpRequest.GetResponse();
 
-            //create a stream to hold the contents of the response (in this case it is the contents of the XML file
-            //var receiveStream = response.GetResponseStream();
+        //    //create a stream to hold the contents of the response (in this case it is the contents of the XML file
+        //    //var receiveStream = response.GetResponseStream();
 
 
-            XmlDocument doc = new XmlDocument();
-            string pathToFiles = Server.MapPath("/crimemap");
+        //    XmlDocument doc = new XmlDocument();
+        //    string pathToFiles = Server.MapPath("/crimemap");
 
-            doc.Load(pathToFiles+"\\crimemap.xml");
-            string xmlcontents = doc.InnerXml;
+        //    doc.Load(pathToFiles+"\\crimemap.xml");
+        //    string xmlcontents = doc.InnerXml;
 
-             byte[] byteArray = Encoding.UTF8.GetBytes( xmlcontents );
-            MemoryStream stream = new MemoryStream( byteArray ); 
+        //     byte[] byteArray = Encoding.UTF8.GetBytes( xmlcontents );
+        //    MemoryStream stream = new MemoryStream( byteArray ); 
  
-            // convert stream to string
-            StreamReader reader = new StreamReader( stream );
+        //    // convert stream to string
+        //    StreamReader reader = new StreamReader( stream );
            
-            XmlSerializer serializer = new XmlSerializer(typeof(nastani));
-            nastani result = (nastani)serializer.Deserialize(reader);
+        //    XmlSerializer serializer = new XmlSerializer(typeof(nastani));
+        //    nastani result = (nastani)serializer.Deserialize(reader);
 
-           // result.NastaniField = result.NastaniField.Where(c => c.grad == "Скопје" && c.datum.Contains("." + DateTime.Now.Date.Year.ToString())).ToArray();
-            //close the stream
-            //receiveStream.Close();
+        //   // result.NastaniField = result.NastaniField.Where(c => c.grad == "Скопје" && c.datum.Contains("." + DateTime.Now.Date.Year.ToString())).ToArray();
+        //    //close the stream
+        //    //receiveStream.Close();
 
-            //Label1.Text = result.NastaniField[0].opis;
-            string json = JsonConvert.SerializeObject(result.NastaniField);
-            return json;
+        //    //Label1.Text = result.NastaniField[0].opis;
+        //    string json = JsonConvert.SerializeObject(result.NastaniField);
+        //    return json;
 
-        }
+        //}
 
         protected void GetAirInfo()
         {
@@ -221,6 +222,44 @@ namespace DiplomskaSmartCity
         protected void lbPatishta_Click(object sender, EventArgs e)
         {
             GetSkopjeUliciAktivnosti();
+        }
+
+        protected void GetWaterInfo()
+        {
+            string url = "https://www.vodovod-skopje.com.mk/";
+            try
+            {
+                HttpWebRequest webrequest = (HttpWebRequest)WebRequest.Create(url);
+                webrequest.Method = "GET";
+                HttpWebResponse webResponse = (HttpWebResponse)webrequest.GetResponse();
+                string sourceCode;
+                using (StreamReader responseStream = new StreamReader(webResponse.GetResponseStream()))
+                {
+                    sourceCode = responseStream.ReadToEnd().Trim();
+                }
+
+                HtmlAgilityPack.HtmlDocument doc = new HtmlAgilityPack.HtmlDocument();
+                doc.LoadHtml(sourceCode);
+                List<string> links = new List<string>();
+                HtmlAgilityPack.HtmlNode node = doc.DocumentNode.SelectSingleNode("//div[@id='divMarquee']");
+
+                if (node != null)
+                {
+                    ltrWater.Text = node.InnerHtml;
+                }
+                else
+                {
+                    ltrWater.Text = @"<h4>Нема известувања</h4>";
+                }
+            }
+            catch
+            {
+                ltrWater.Text = @"<h4>Нема известувања</h4>";
+            }
+        }
+        protected void lbWater_Click(object sender, EventArgs e)
+        {
+            GetWaterInfo();
         }
     }
 }

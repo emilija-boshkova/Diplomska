@@ -176,65 +176,66 @@
     <script type="text/javascript">
         var map;
         var map_markers = [];
-        function initialize() {
-            if (map_markers.length > 0)
-                clearMap();
-            var markers = JSON.parse('<%=CrimeMapData() %>');
-            var mapOptions = {
-                center: new google.maps.LatLng(41.996528, 21.428576),
-                zoom: 12
-            };
-            var infoWindow = new google.maps.InfoWindow();
-            map = new google.maps.Map(document.getElementById("map-canvas"),
-               mapOptions);
-            for (i = 0; i < markers.length; i++) {
-                var data = markers[i];
-                var image = "../images/crimemap/pin-other-55.png";
-                if (data.shto == "насилство")
-                    image = "../images/crimemap/pin-violence-50.png";
-                else if (data.shto == "оружје")
-                    image = "../images/crimemap/pin-gun-55.png";
-                else if (data.shto == "кражба")
-                    image = "../images/crimemap/pin-thief-55.png";
-                else if (data.shto == "документи")
-                    image = "../images/crimemap/pin-papers-55.png";
-                else if (data.shto == "дрога")
-                    image = "../images/crimemap/pin-spric-55.png";
-                else if (data.shto == "сообраќај")
-                    image = "../images/crimemap/pin-car-55.png";
-                else
-                    image = "../images/crimemap/pin-other-55.png";
-                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: map,
-                    title: data.shto,
-                    icon: image
-                });
-                (function (marker, data) {
+        //function initialize()
+        //{
+        //    if (map_markers.length > 0)
+        //        clearMap();
+        //    var markers = JSON.parse('CrimeMapData()');
+        //    var mapOptions = {
+        //        center: new google.maps.LatLng(41.996528, 21.428576),
+        //        zoom: 12
+        //    };
+        //    var infoWindow = new google.maps.InfoWindow();
+        //    map = new google.maps.Map(document.getElementById("map-canvas"),
+        //       mapOptions);
+        //    for (i = 0; i < markers.length; i++) {
+        //        var data = markers[i];
+        //        var image = "../images/crimemap/pin-other-55.png";
+        //        if (data.shto == "насилство")
+        //            image = "../images/crimemap/pin-violence-50.png";
+        //        else if (data.shto == "оружје")
+        //            image = "../images/crimemap/pin-gun-55.png";
+        //        else if (data.shto == "кражба")
+        //            image = "../images/crimemap/pin-thief-55.png";
+        //        else if (data.shto == "документи")
+        //            image = "../images/crimemap/pin-papers-55.png";
+        //        else if (data.shto == "дрога")
+        //            image = "../images/crimemap/pin-spric-55.png";
+        //        else if (data.shto == "сообраќај")
+        //            image = "../images/crimemap/pin-car-55.png";
+        //        else
+        //            image = "../images/crimemap/pin-other-55.png";
+        //        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+        //        var marker = new google.maps.Marker({
+        //            position: myLatlng,
+        //            map: map,
+        //            title: data.shto,
+        //            icon: image
+        //        });
+        //        (function (marker, data) {
 
-                    // Attaching a click event to the current marker
-                    google.maps.event.addListener(marker, "click", function (e) {
-                        infoWindow.setContent(data.opis);
-                        infoWindow.open(map, marker);
-                    });
-                })(marker, data);
-                map_markers.push(marker);
-            }
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
+        //            // Attaching a click event to the current marker
+        //            google.maps.event.addListener(marker, "click", function (e) {
+        //                infoWindow.setContent(data.opis);
+        //                infoWindow.open(map, marker);
+        //            });
+        //        })(marker, data);
+        //        map_markers.push(marker);
+        //    }
+        //}
+        //google.maps.event.addDomListener(window, 'load', initialize);
 
-        function clearMap() {
-            $('#crime_map').block({
-                message: "<img src='images/loader.gif'/>"
-            });
-            for (var i = 0; i < map_markers.length; i++) {
-                map_markers[i].setMap(null);
-            }
-            map_markers = [];
-            initialize();
-            $('#crime_map').unblock(); 
-        }
+        //function clearMap() {
+        //    $('#crime_map').block({
+        //        message: "<img src='images/loader.gif'/>"
+        //    });
+        //    for (var i = 0; i < map_markers.length; i++) {
+        //        map_markers[i].setMap(null);
+        //    }
+        //    map_markers = [];
+        //    initialize();
+        //    $('#crime_map').unblock(); 
+        //}
         function BlockAir() {
             $('#UpdatePnlAir').block({
                 message: "<img src='images/loader.gif'/>"
@@ -243,6 +244,12 @@
 
         function BlockRoads() {
             $('#UpdatePnlRoads').block({
+                message: "<img src='images/loader.gif'/>"
+            });
+        }
+
+        function BlockWater() {
+            $('#UpdatePnlWater').block({
                 message: "<img src='images/loader.gif'/>"
             });
         }
@@ -370,7 +377,7 @@
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
-                <div class="portlet box blue">
+                <div class="portlet box grey">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-sun-o"></i>Време
@@ -432,7 +439,39 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
-                <div id="crime_map" class="portlet box red">
+                <div class="portlet box blue">
+                    <asp:UpdatePanel runat="server" ID="UpdatePnlWater" UpdateMode="Conditional">
+                        <ContentTemplate>
+                    <div class="portlet-title">
+                        <div class="caption">
+                            <i class="fa fa-tint"></i>Водовод
+                        </div>
+                        <div class="actions">
+                            <div class="btn-group">
+                                <asp:LinkButton CssClass="btn btn-sm default" runat="server" ID="lbWater" OnClick="lbWater_Click" OnClientClick="BlockWater()" Text="Освежи" />
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="cont-col2">
+                            <asp:Panel runat="server" ID="pnlWater" ScrollBars="Auto">
+                            <asp:Literal runat="server" ID="ltrWater"></asp:Literal>
+                            </asp:Panel>
+                        </div>
+                        
+                    </div>
+                            </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="lbWater" EventName="Click" />
+                        </Triggers>
+                        </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+               <div id="crime_map" class="portlet box red">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-map-marker"></i>Мапа на криминалот
@@ -441,7 +480,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                             <div class="btn-group">
                                 <%--<a class="btn btn-sm default" href="#" data-close-others="true">Filter By
                                         </a>--%>
-                                <input type="button" onclick="clearMap()" value="Освежи" class="btn btn-sm default" />
+                                <input type="button"  value="Освежи" class="btn btn-sm default" /><%--onclick="clearMap()"--%>
                             </div>
                         </div>
                     </div>

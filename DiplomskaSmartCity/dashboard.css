@@ -128,3 +128,8 @@
             background-color:transparent !important;
             border:none !important;
         }
+
+#pnlWater
+{
+    max-height:375px;
+}
