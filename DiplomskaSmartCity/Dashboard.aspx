@@ -6,145 +6,6 @@
 <head>
     <title>Скопје - Паметен Град</title>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-   <%-- <style type="text/css">
-        #header
-        {
-            height: 100px;
-            background-color: #fafafa;
-            padding-top: 30px;
-        }
-
-        #title
-        {
-            font-size: 30px;
-            color: GrayText;
-        }
-
-        #gvAir
-        {
-            margin-right: 20px;
-        }
-
-        #gvSkopjePat
-        {
-            width: 600px;
-        }
-
-        .aw-widget-current-inner
-        {
-            margin-bottom: 15px;
-        }
-
-        #legenda_air
-        {
-            padding-left: 70px;
-        }
-
-        .desc > div
-        {
-            float: left;
-        }
-
-        ul
-        {
-            width: 100%;
-            list-style: none;
-        }
-
-            ul li
-            {
-                float: inherit;
-            }
-        .input-group
-        {
-            width:100%;
-            margin-top:5px;
-        }
-        #map_legend
-        {
-            width: 100%;
-            list-style: none;
-            float: left;
-            margin-left: -50px;
-        }
-
-            #map_legend li label
-            {
-                font-size: x-small !important;
-            }
-
-            #map_legend img
-            {
-                width: 45px;
-            }
-
-        .aw-alert-info, .aw-six-hours,
-        .aw-more-block,
-        .aw-more-sep-3,
-        .aw-more-sep-2,
-        .aw-more-inner,
-        .aw-six-hours-inner
-        {
-            display: none;
-        }
-
-        .row
-        {
-            margin-left:0px !important;
-            margin-right:0px !important;
-        }
-
-
-        @media (max-width:1130px)
-        {
-            ul
-            {
-                width: 100%;
-            }
-
-                ul li
-                {
-                    display: block;
-                    font-size: xx-small;
-                    float: left;
-                }
-
-            #legenda_air
-            {
-                width: 100%;
-                padding-left: 10px;
-            }
-
-            header
-            {
-                height: 150px;
-            }
-
-            #air-table
-            {
-                overflow: auto;
-            }
-            /*#air-portlet-body
-            {
-                height: 400px;
-            }*/
-        }
-
-        @media (max-width:490px)
-        {
-
-            /*#air-portlet-body
-            {
-                height: 500px;
-            }*/
-        }
-
-        .blockMsg
-        {
-            background-color:transparent !important;
-            border:none !important;
-        }
-    </style>--%>
     <link href="./assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="./assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
@@ -168,11 +29,11 @@
     <script src="./assets/scripts/custom/index.js" type="text/javascript"></script>
     <script src="./assets/scripts/custom/tasks.js" type="text/javascript"></script>
     <script src="jquery.blockUI.js"></script>
-    
+
     <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKVFU26j-NNGxbbVd9XJWG7xD2esfw-uA&sensor=false">
     </script>
-    
+
     <script type="text/javascript">
         var map;
         var map_markers = [];
@@ -254,7 +115,7 @@
             });
         }
 
-        
+
     </script>
 </head>
 <body>
@@ -442,36 +303,36 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                 <div class="portlet box blue">
                     <asp:UpdatePanel runat="server" ID="UpdatePnlWater" UpdateMode="Conditional">
                         <ContentTemplate>
-                    <div class="portlet-title">
-                        <div class="caption">
-                            <i class="fa fa-tint"></i>Водовод
-                        </div>
-                        <div class="actions">
-                            <div class="btn-group">
-                                <asp:LinkButton CssClass="btn btn-sm default" runat="server" ID="lbWater" OnClick="lbWater_Click" OnClientClick="BlockWater()" Text="Освежи" />
-                                
+                            <div class="portlet-title">
+                                <div class="caption">
+                                    <i class="fa fa-tint"></i>Водовод
+                                </div>
+                                <div class="actions">
+                                    <div class="btn-group">
+                                        <asp:LinkButton CssClass="btn btn-sm default" runat="server" ID="lbWater" OnClick="lbWater_Click" OnClientClick="BlockWater()" Text="Освежи" />
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="portlet-body">
-                        <div class="cont-col2">
-                            <asp:Panel runat="server" ID="pnlWater" ScrollBars="Auto">
-                            <asp:Literal runat="server" ID="ltrWater"></asp:Literal>
-                            </asp:Panel>
-                        </div>
-                        
-                    </div>
-                            </ContentTemplate>
+                            <div class="portlet-body">
+                                <div class="cont-col2">
+                                    <asp:Panel runat="server" ID="pnlWater" ScrollBars="Auto">
+                                        <asp:Literal runat="server" ID="ltrWater"></asp:Literal>
+                                    </asp:Panel>
+                                </div>
+
+                            </div>
+                        </ContentTemplate>
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="lbWater" EventName="Click" />
                         </Triggers>
-                        </asp:UpdatePanel>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-               <div id="crime_map" class="portlet box red">
+                <div id="crime_map" class="portlet box red">
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-map-marker"></i>Мапа на криминалот
@@ -480,7 +341,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                             <div class="btn-group">
                                 <%--<a class="btn btn-sm default" href="#" data-close-others="true">Filter By
                                         </a>--%>
-                                <input type="button"  value="Освежи" class="btn btn-sm default" /><%--onclick="clearMap()"--%>
+                                <input type="button" value="Освежи" class="btn btn-sm default" /><%--onclick="clearMap()"--%>
                             </div>
                         </div>
                     </div>
@@ -545,6 +406,11 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                 </div>
             </div>
         </div>
+        <div class="footer">
+	 <div class="footer-inner">
+		 2014 &copy; Емилија Бошкова
+	 </div>
+ </div>
     </form>
 </body>
 </html>

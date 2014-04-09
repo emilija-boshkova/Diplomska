@@ -245,7 +245,7 @@ namespace DiplomskaSmartCity
 
                 if (node != null)
                 {
-                    ltrWater.Text = node.InnerHtml;
+                    ltrWater.Text = node.InnerHtml.Replace("<marquee","<div");
                 }
                 else
                 {

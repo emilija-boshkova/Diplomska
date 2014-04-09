@@ -57,10 +57,10 @@
                 font-size: x-small !important;
             }
 
-            #map_legend img
+            /*#map_legend img
             {
                 width: 45px;
-            }
+            }*/
 
         .aw-alert-info, .aw-six-hours,
         .aw-more-block,
@@ -132,4 +132,9 @@
 #pnlWater
 {
     max-height:375px;
+}
+.footer-inner
+{
+    width:100%;
+    text-align:center;
 }

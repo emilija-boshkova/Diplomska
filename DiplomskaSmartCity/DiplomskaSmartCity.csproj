@@ -410,7 +410,6 @@
     <Content Include="images\crimemap\pin-spric-55.png" />
     <Content Include="images\crimemap\pin-thief-55.png" />
     <Content Include="images\crimemap\pin-violence-50.png" />
-    <Content Include="images\crimemap\pin-violence-55.png" />
     <Content Include="images\finki-logo.png" />
     <Content Include="images\grad_skopje2-transparent.png" />
     <Content Include="jquery.blockUI.js" />
