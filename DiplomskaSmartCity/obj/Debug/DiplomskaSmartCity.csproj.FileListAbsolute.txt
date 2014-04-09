@@ -7,4 +7,3 @@ E:\Diplomska\DiplomskaSmartCity\bin\HtmlAgilityPack.xml
 E:\Diplomska\DiplomskaSmartCity\bin\Newtonsoft.Json.xml
 E:\Diplomska\DiplomskaSmartCity\obj\Debug\DiplomskaSmartCity.dll
 E:\Diplomska\DiplomskaSmartCity\obj\Debug\DiplomskaSmartCity.pdb
-E:\Diplomska\DiplomskaSmartCity\obj\Debug\DiplomskaSmartCity.csprojResolveAssemblyReference.cache
