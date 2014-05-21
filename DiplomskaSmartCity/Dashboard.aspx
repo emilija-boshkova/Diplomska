@@ -122,9 +122,9 @@
     <form id="Form1" runat="server">
         <div id="title_div" class="row">
             <div class="col-md-12">
-                <div class="pull-left">
+               <%-- <div class="pull-left">
                     <img src="images/finki-logo.png" />
-                </div>
+                </div>--%>
                 <div class="page-title" style="margin-top: 35px">
                     <label id="title"><b><i>СКОПЈЕ - ПАМЕТЕН ГРАД</i></b></label>
 
