@@ -330,7 +330,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                 </div>
             </div>
         </div>
-        <div class="row">
+       <%-- <div class="row">
             <div class="col-md-12">
                 <div id="crime_map" class="portlet box red">
                     <div class="portlet-title">
@@ -339,9 +339,8 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                         </div>
                         <div class="actions">
                             <div class="btn-group">
-                                <%--<a class="btn btn-sm default" href="#" data-close-others="true">Filter By
-                                        </a>--%>
-                                <input type="button" value="Освежи" class="btn btn-sm default" /><%--onclick="clearMap()"--%>
+                                
+                                <input type="button" value="Освежи" class="btn btn-sm default" />>
                             </div>
                         </div>
                     </div>
@@ -405,12 +404,12 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
         <div class="footer">
-	 <div class="footer-inner">
-		 2014 &copy; Емилија Бошкова
-	 </div>
- </div>
+            <div class="footer-inner">
+                2014 &copy; Емилија Бошкова
+            </div>
+        </div>
     </form>
 </body>
 </html>
