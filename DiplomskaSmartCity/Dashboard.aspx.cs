@@ -23,48 +23,50 @@ namespace DiplomskaSmartCity
             if (!IsPostBack)
             {
                 GetAirInfo();
-                GetSkopjeUliciAktivnosti();
-                GetWaterInfo();
+                //GetSkopjeUliciAktivnosti();
+                FillFixDataRoads();
+                //GetWaterInfo();
+                FillFixDataWater();
             }
         }
 
-        //protected string CrimeMapData()//(object sender, EventArgs e)
-        //{
-        //    //requesting the particular web page
-        //   // Uri myuri = new Uri("http://crimemap.finki.ukim.mk/model/xmldump.php");
-        //   // var httpRequest = (HttpWebRequest)WebRequest.Create(myuri);
+        protected string CrimeMapData()//(object sender, EventArgs e)
+        {
+            //requesting the particular web page
+            // Uri myuri = new Uri("http://crimemap.finki.ukim.mk/model/xmldump.php");
+            // var httpRequest = (HttpWebRequest)WebRequest.Create(myuri);
 
-        //    //geting the response from the request url
-        //    //var response = (HttpWebResponse)httpRequest.GetResponse();
+            //geting the response from the request url
+            //var response = (HttpWebResponse)httpRequest.GetResponse();
 
-        //    //create a stream to hold the contents of the response (in this case it is the contents of the XML file
-        //    //var receiveStream = response.GetResponseStream();
+            //create a stream to hold the contents of the response (in this case it is the contents of the XML file
+            //var receiveStream = response.GetResponseStream();
 
 
-        //    XmlDocument doc = new XmlDocument();
-        //    string pathToFiles = Server.MapPath("/crimemap");
+            XmlDocument doc = new XmlDocument();
+            string pathToFiles = Server.MapPath("/crimemap");
 
-        //    doc.Load(pathToFiles+"\\crimemap.xml");
-        //    string xmlcontents = doc.InnerXml;
+            doc.Load(pathToFiles + "\\crimemap.xml");
+            string xmlcontents = doc.InnerXml;
 
-        //     byte[] byteArray = Encoding.UTF8.GetBytes( xmlcontents );
-        //    MemoryStream stream = new MemoryStream( byteArray ); 
- 
-        //    // convert stream to string
-        //    StreamReader reader = new StreamReader( stream );
-           
-        //    XmlSerializer serializer = new XmlSerializer(typeof(nastani));
-        //    nastani result = (nastani)serializer.Deserialize(reader);
+            byte[] byteArray = Encoding.UTF8.GetBytes(xmlcontents);
+            MemoryStream stream = new MemoryStream(byteArray);
 
-        //   // result.NastaniField = result.NastaniField.Where(c => c.grad == "Скопје" && c.datum.Contains("." + DateTime.Now.Date.Year.ToString())).ToArray();
-        //    //close the stream
-        //    //receiveStream.Close();
+            // convert stream to string
+            StreamReader reader = new StreamReader(stream);
 
-        //    //Label1.Text = result.NastaniField[0].opis;
-        //    string json = JsonConvert.SerializeObject(result.NastaniField);
-        //    return json;
+            XmlSerializer serializer = new XmlSerializer(typeof(nastani));
+            nastani result = (nastani)serializer.Deserialize(reader);
 
-        //}
+            // result.NastaniField = result.NastaniField.Where(c => c.grad == "Скопје" && c.datum.Contains("." + DateTime.Now.Date.Year.ToString())).ToArray();
+            //close the stream
+            //receiveStream.Close();
+
+            //Label1.Text = result.NastaniField[0].opis;
+            string json = JsonConvert.SerializeObject(result.NastaniField);
+            return json;
+
+        }
 
         protected void GetAirInfo()
         {
@@ -261,5 +263,61 @@ namespace DiplomskaSmartCity
         {
             GetWaterInfo();
         }
+
+        public void FillFixDataRoads()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("Nr", typeof(string)));
+            dt.Columns.Add(new DataColumn("Street", typeof(string)));
+            dt.Columns.Add(new DataColumn("Activity", typeof(string)));
+
+            DataRow r = dt.NewRow();
+            r["Nr"] = "1";
+            r["Street"] = "бул.Киро Глигоров";
+            r["Activity"] = "нивелирање канализациони шахти";
+            dt.Rows.Add(r);
+
+            r = dt.NewRow();
+            r["Nr"] = "2";
+            r["Street"] = "бул.Метрополит Теодосиј Гологанов";
+            r["Activity"] = "санација на прекоп";
+            dt.Rows.Add(r);
+
+            r = dt.NewRow();
+            r["Nr"] = "3";
+            r["Street"] = "ул.Перо Наков";
+            r["Activity"] = "санација на ударни дупки";
+            dt.Rows.Add(r);
+
+            r = dt.NewRow();
+            r["Nr"] = "4";
+            r["Street"] = "ул.Благоја Стефковски";
+            r["Activity"] = "санација на ударни дупки";
+            dt.Rows.Add(r);
+
+            r = dt.NewRow();
+            r["Nr"] = "5";
+            r["Street"] = "патека во парк шума Гази Баба";
+            r["Activity"] = "санација со ризла на патека";
+            dt.Rows.Add(r);
+
+            gvSkopjePat.DataSource = dt;
+            gvSkopjePat.DataBind();
+
+        }
+
+        public void FillFixDataWater()
+        {
+            ltrWater.Text = @"<h4>
+                         ИЗВЕСТУВАЊЕ ЗА ПРЕКИН НА ВОДОСНАБДУВАЊЕ!!!
+                   </h4>
+                   <p>Поради замена на противпожарен хидрант профил ф-80 милиметри на улица Радишанска без
+водоснабудање ќе останат дел од корисниците од истоимената улица од 10:00 часот па се до промена на хидрантот.
+Поради поправка на шибер затварач профил ф-175 милиметри на улица Цветан Димов бб без 
+водоснабдување ќе останат корисниците од улиците Цветан Димов, Менделеева и Ордан Чопела од 10:00
+часот па се до санирање на дефектот.
+                   </p>";
+        }
+
     }
 }

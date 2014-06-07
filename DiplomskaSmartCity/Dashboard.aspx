@@ -37,66 +37,66 @@
     <script type="text/javascript">
         var map;
         var map_markers = [];
-        //function initialize()
-        //{
-        //    if (map_markers.length > 0)
-        //        clearMap();
-        //    var markers = JSON.parse('CrimeMapData()');
-        //    var mapOptions = {
-        //        center: new google.maps.LatLng(41.996528, 21.428576),
-        //        zoom: 12
-        //    };
-        //    var infoWindow = new google.maps.InfoWindow();
-        //    map = new google.maps.Map(document.getElementById("map-canvas"),
-        //       mapOptions);
-        //    for (i = 0; i < markers.length; i++) {
-        //        var data = markers[i];
-        //        var image = "../images/crimemap/pin-other-55.png";
-        //        if (data.shto == "насилство")
-        //            image = "../images/crimemap/pin-violence-50.png";
-        //        else if (data.shto == "оружје")
-        //            image = "../images/crimemap/pin-gun-55.png";
-        //        else if (data.shto == "кражба")
-        //            image = "../images/crimemap/pin-thief-55.png";
-        //        else if (data.shto == "документи")
-        //            image = "../images/crimemap/pin-papers-55.png";
-        //        else if (data.shto == "дрога")
-        //            image = "../images/crimemap/pin-spric-55.png";
-        //        else if (data.shto == "сообраќај")
-        //            image = "../images/crimemap/pin-car-55.png";
-        //        else
-        //            image = "../images/crimemap/pin-other-55.png";
-        //        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
-        //        var marker = new google.maps.Marker({
-        //            position: myLatlng,
-        //            map: map,
-        //            title: data.shto,
-        //            icon: image
-        //        });
-        //        (function (marker, data) {
+        function initialize()
+        {
+            if (map_markers.length > 0)
+                clearMap();
+            var markers = JSON.parse('<%=CrimeMapData() %>');
+            var mapOptions = {
+                center: new google.maps.LatLng(41.996528, 21.428576),
+                zoom: 12
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            map = new google.maps.Map(document.getElementById("map-canvas"),
+               mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i];
+                var image = "../images/crimemap/pin-other-55.png";
+                if (data.shto == "насилство")
+                    image = "../images/crimemap/pin-violence-50.png";
+                else if (data.shto == "оружје")
+                    image = "../images/crimemap/pin-gun-55.png";
+                else if (data.shto == "кражба")
+                    image = "../images/crimemap/pin-thief-55.png";
+                else if (data.shto == "документи")
+                    image = "../images/crimemap/pin-papers-55.png";
+                else if (data.shto == "дрога")
+                    image = "../images/crimemap/pin-spric-55.png";
+                else if (data.shto == "сообраќај")
+                    image = "../images/crimemap/pin-car-55.png";
+                else
+                    image = "../images/crimemap/pin-other-55.png";
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.shto,
+                    icon: image
+                });
+                (function (marker, data) {
 
-        //            // Attaching a click event to the current marker
-        //            google.maps.event.addListener(marker, "click", function (e) {
-        //                infoWindow.setContent(data.opis);
-        //                infoWindow.open(map, marker);
-        //            });
-        //        })(marker, data);
-        //        map_markers.push(marker);
-        //    }
-        //}
-        //google.maps.event.addDomListener(window, 'load', initialize);
+                    // Attaching a click event to the current marker
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.opis);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+                map_markers.push(marker);
+            }
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
 
-        //function clearMap() {
-        //    $('#crime_map').block({
-        //        message: "<img src='images/loader.gif'/>"
-        //    });
-        //    for (var i = 0; i < map_markers.length; i++) {
-        //        map_markers[i].setMap(null);
-        //    }
-        //    map_markers = [];
-        //    initialize();
-        //    $('#crime_map').unblock(); 
-        //}
+        function clearMap() {
+            $('#crime_map').block({
+                message: "<img src='images/loader.gif'/>"
+            });
+            for (var i = 0; i < map_markers.length; i++) {
+                map_markers[i].setMap(null);
+            }
+            map_markers = [];
+            initialize();
+            $('#crime_map').unblock(); 
+        }
         function BlockAir() {
             $('#UpdatePnlAir').block({
                 message: "<img src='images/loader.gif'/>"
@@ -122,9 +122,9 @@
     <form id="Form1" runat="server">
         <div id="title_div" class="row">
             <div class="col-md-12">
-               <%-- <div class="pull-left">
+                <div class="pull-left">
                     <img src="images/finki-logo.png" />
-                </div>--%>
+                </div>
                 <div class="page-title" style="margin-top: 35px">
                     <label id="title"><b><i>СКОПЈЕ - ПАМЕТЕН ГРАД</i></b></label>
 
@@ -330,7 +330,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                 </div>
             </div>
         </div>
-       <%-- <div class="row">
+        <div class="row">
             <div class="col-md-12">
                 <div id="crime_map" class="portlet box red">
                     <div class="portlet-title">
@@ -339,14 +339,18 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                         </div>
                         <div class="actions">
                             <div class="btn-group">
-                                
-                                <input type="button" value="Освежи" class="btn btn-sm default" />>
+                                <%--<a class="btn btn-sm default" href="#" data-close-others="true">Filter By
+                                        </a>--%>
+                                <input type="button" value="Освежи" class="btn btn-sm default" /><%--onclick="clearMap()"--%>
                             </div>
                         </div>
                     </div>
                     <div id="map-portlet-body" class="portlet-body">
                         <div class="cont-col2">
-                            <div class="gmaps" id="map-canvas" />
+                            <%-- <div class="gmaps" id="map-canvas" />--%>
+                            <div class="">
+                                <div class="gmaps" id="map-canvas" />
+                            </div>
                         </div>
                         <div class="input-group">
                             <ul id="map_legend">
@@ -404,7 +408,7 @@ By accessing and/or using this code snippet, you agree to AccuWeather’s terms 
                     </div>
                 </div>
             </div>
-        </div>--%>
+        </div>
         <div class="footer">
             <div class="footer-inner">
                 2014 &copy; Емилија Бошкова
